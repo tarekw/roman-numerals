@@ -4,13 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:server": "tsc -p ./tsconfig.server.json",
-    "build": "webpack",
-    "build-watch": "webpack --watch",
-    "start": "webpack-dev-server",
-    "server": "webpack; node dist/server/index.js",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-server": "mocha test/server/**/*.spec.js",
     "lint": "tsfmt --verify app/**/*.tsx app/*.tsx app/**/*.ts app/*.ts && tslint app/**/*.tsx app/*.tsx app/**/*.ts app/*.ts",
     "beautify": "tsfmt -r"
   },
@@ -65,8 +61,10 @@
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "typescript-formatter": "^7.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.6.2",
     "webpack": "^3.2.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack-dev-server": "^2.5.1",
+    "webpack-merge": "^4.1.2"
   }
 }

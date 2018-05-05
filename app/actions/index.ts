@@ -2,7 +2,15 @@ import * as fetch from 'isomorphic-fetch';
 
 import constants from '../constants/actionsType';
 
-const BASE_PATH = 'http://localhost:3333';
+let BASE_PATH = '';
+
+// Setup different BASE_PATHs for other environments
+if (process.env.NODE_ENV === 'production') {
+    BASE_PATH = 'http://localhost:3333';    // currently same as dev
+} else {
+    console.log('Looks like you\'re on development mode');
+    BASE_PATH = 'http://localhost:3333';
+}
 
 export const convertNumber = (number: number) => (dispatch: any) => {
     fetch(`${BASE_PATH}/convertNumberToRoman?number=${number}`)
